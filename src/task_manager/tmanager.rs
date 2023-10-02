@@ -23,7 +23,7 @@ impl TaskManager {
         self.tasks.push(new_task);
     }
 
-    fn change_task_status(&mut self, task_id: String, status: TaskStatus) -> bool {
+    pub fn change_task_status(&mut self, task_id: String, status: TaskStatus) -> bool {
         for task in &mut self.tasks {
             if task.id == task_id {
                 task.status = status;
@@ -33,11 +33,11 @@ impl TaskManager {
         return false;
     }
 
-    fn delete_task(&mut self, task_id: String) {
+    pub fn delete_task(&mut self, task_id: String) {
         self.tasks.retain(|task| task.id != task_id);
     }
 
-    fn get_task(&mut self, task_id: String) -> Option<Task> {
+    pub fn get_task(&mut self, task_id: String) -> Option<Task> {
         if let Some(index) = self.tasks.iter_mut().position(|task| task.id == task_id) {
             Some(self.tasks.remove(index))
         } else {
@@ -45,7 +45,7 @@ impl TaskManager {
         }
     }
 
-    fn list_tasks(&self) {
+    pub fn list_tasks(&self) {
         for task in &self.tasks {
             println!("-------------------------------------------");
             println!("{}", task);

@@ -1,7 +1,12 @@
 
 mod task;
-pub mod task_manager;
+mod task_manager;
+mod cmd;
+
+use cmd::App;
+
 
 fn main() {
-    println!("Hello, world!");
+    let app = App::new();
+    app.init();
 }
